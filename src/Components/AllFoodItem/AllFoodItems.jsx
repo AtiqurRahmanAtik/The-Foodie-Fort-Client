@@ -17,7 +17,7 @@ const AllFoodItems = () => {
 
 
     return (
-        <div className="grid gap-3 grid-cols-1 lg:grid-cols-3 my-14">
+        <div className=" grid gap-3 grid-cols-1 lg:grid-cols-3 my-14">
             {
                 foodItems.map(item=> <FoodItemCard key={item._id} item={item}></FoodItemCard>)
             }

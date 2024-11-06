@@ -9,7 +9,7 @@ const Root = () => {
         <div>
             <NavigationBar></NavigationBar>
            
-           <div className="my-9">
+           <div className=" container mx-auto my-9">
            <Outlet></Outlet>
            </div>
            

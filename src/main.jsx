@@ -12,6 +12,8 @@ import Home from './Components/Home/Home';
 import AllUser from './Components/AllUser/AllUser';
 import ErrorPages from './Components/Pages/ErrorPages';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
+import SingleItem from './Components/SingleFoodItem/SingleItem';
+import RegisterPage from './Components/Pages/RegisterPage/RegisterPage';
 
 
 const router = createBrowserRouter([
@@ -23,7 +25,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        
+      
+      },
+      {
+        path: '/:id',
+        element:<SingleItem></SingleItem>,
+        loader: ({params}) => fetch(`http://localhost:5000/foodItems/${params.id}`)
+     
+
       },
       {
         path:'/allUser',
@@ -32,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LoginPage></LoginPage>
+      },
+      {
+        path:'/register',
+        element: <RegisterPage></RegisterPage>
       }
 
     ]
