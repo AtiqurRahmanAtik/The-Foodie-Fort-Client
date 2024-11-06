@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import 'animate.css';
 import axios from "axios";
 
-const FoodItemCard = ({item}) => {
+const FoodItemCard = ({item,refetch}) => {
 
     console.log(item);
     const {_id,ProductName,BrandName,ProductImage,Description,Price,Category,Ratings,ProductCreationDateTime} =item;
@@ -12,12 +12,16 @@ const FoodItemCard = ({item}) => {
     const handleDelete = (id)=>{
       console.log(id);
       axios.delete(`http://localhost:5000/foodItems/${id}`)
-      .then(res=>console.log(res.data))
+      .then(res=>{
+        console.log(res.data);
+        refetch(); 
+      })
       .catch(err=>{
         console.log(err);
       })
 
      
+      // data loading using fetch
       // fetch(`http://localhost:5000/foodItems/${id}`,{
       //   method: 'DELETE',
       //   headers: { "Content-Type": "application/json",}
@@ -26,7 +30,7 @@ const FoodItemCard = ({item}) => {
 
     }
 
-
+  // data loading using fetch and axios
     // handleAbout 
     // const handleAbout = (id)=>{
     //   console.log(id)
@@ -36,6 +40,8 @@ const FoodItemCard = ({item}) => {
     //     console.log(err);
     //   })
     // }
+
+ 
 
     return (
  

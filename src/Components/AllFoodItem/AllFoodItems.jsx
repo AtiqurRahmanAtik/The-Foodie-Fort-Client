@@ -15,13 +15,13 @@ const AllFoodItems = () => {
       };
 
     
-    const {data:foodItems, isLoading, error } = useQuery({
+    const {data:foodItems, isLoading, error,refetch } = useQuery({
         queryKey: ['foodItem'],
         queryFn: fetchData,
-
-
-
-    })
+       
+    }
+        
+)
 
     // console.log(foodItems);
 
@@ -47,13 +47,24 @@ const AllFoodItems = () => {
     }
 
     if(error){
-        return <><p> The Error is ${error}</p></>
+        return <><p> The Error is {error}</p></>
     }
+
+
+
     return (
         <div className=" grid gap-3 grid-cols-1 lg:grid-cols-3 my-14">
             {
-                foodItems?.map(item=> <FoodItemCard key={item._id} item={item}></FoodItemCard>)
+                foodItems?.map(item=> <FoodItemCard
+                 key={item._id} 
+                 item={item} 
+                 refetch={refetch}
+                 isLoading={isLoading}
+                 
+                 ></FoodItemCard>)
             }
+
+  
         </div>
     );
 };
