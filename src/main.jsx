@@ -14,6 +14,7 @@ import ErrorPages from './Components/Pages/ErrorPages';
 import LoginPage from './Components/Pages/LoginPage/LoginPage';
 import SingleItem from './Components/SingleFoodItem/SingleItem';
 import RegisterPage from './Components/Pages/RegisterPage/RegisterPage';
+import About from './Components/About/About';
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path:'/allUser',
         element: <AllUser></AllUser>
+      },
+      {
+        path:'/about',
+        element: <About></About>
       },
       {
         path: '/login',
