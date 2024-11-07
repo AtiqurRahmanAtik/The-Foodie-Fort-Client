@@ -1,8 +1,17 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router-dom";
+import { authProvider } from "../../AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
 
+    const { googleSingUP} = useContext(authProvider);
+    const navigate = useNavigate();
+
+  // normal registration with register form
     const handleRegister = (e) =>{
         e.preventDefault();
         const form = e.target;
@@ -34,20 +43,48 @@ const RegisterPage = () => {
     }
 
 
+    // google SingUp
+
+    const handleGoogle = () =>{
+      console.log('google hit');
+      googleSingUP()
+      .then(res=>{
+        console.log(res.user);
+
+        if(res.user){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        // navigate
+        navigate('/');
+
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+
+    }
+
+
     return (
-          <div className="hero bg-base-200 ">
+          <div className="hero  ">
   <div className="hero-content w-full flex-col ">
     <div className="text-center w-1/2 lg:text-left">
-      <h1 className="text-5xl font-bold text-center my-3">Registration Here</h1>
+      {/* <h1 className="text-5xl font-bold text-center my-3">Registration Here</h1> */}
      
     </div>
 
 
     {/* form */}
-    <div className="card bg-base-100  w-1/2 shrink-0 shadow-2xl">
+    <div className="card bg-gray-300  w-1/2 shrink-0 shadow-2xl">
 
       <form onSubmit={handleRegister} className="card-body">
-
+      <h1 className="text-5xl font-bold text-center my-3">Registration Here</h1>
       <div className="form-control">
           <label className="label">
             <span className="label-tex text-xl">Name</span>
@@ -70,7 +107,7 @@ const RegisterPage = () => {
         
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary text-2xl">Register</button>
+          <button className="btn bg-orange-500 hover:bg-primary hover:text-white border-none text-2xl">Register</button>
         </div>
       </form>
 
@@ -79,6 +116,19 @@ const RegisterPage = () => {
         <Link to='/login'> <button className="btn btn-active btn-link text-2xl">Login</button></Link>
         
         </h1>
+      </div>
+
+      {/* google button */}
+      <div className="flex space-y-3 flex-col justify-center items-center my-3">
+          <button  onClick={handleGoogle} className="btn w-1/2 text-2xl bg-primary hover:bg-orange-500 text-white hover:text-white"> 
+          <FcGoogle className="text-4xl"/>
+          Google</button>
+
+
+       {/* facebook login */}
+          <button className="btn w-1/2 text-white  text-2xl bg-primary hover:bg-orange-500  hover:text-white"> 
+          <BsFacebook  className="text-4xl text-black rounded-full bg-white" > </BsFacebook>
+          Facebook</button>
       </div>
     </div>
   </div>

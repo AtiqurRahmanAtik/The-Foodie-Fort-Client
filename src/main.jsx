@@ -20,6 +20,7 @@ import {
   QueryClientProvider,
   
 } from '@tanstack/react-query';
+import AuthContext from './Components/AuthContext/AuthContext';
 
 const queryClient = new QueryClient()
 
@@ -70,9 +71,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
 
+    <AuthContext>
     <QueryClientProvider client={queryClient}>
      <RouterProvider router={router} />
     </QueryClientProvider>
+    </AuthContext>
 
   </StrictMode>,
 )
