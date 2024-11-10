@@ -85,6 +85,9 @@ const RegisterPage = () => {
 
       <form onSubmit={handleRegister} className="card-body">
       <h1 className="text-5xl font-bold text-center my-3">Registration Here</h1>
+
+      <h1 className="text-5xl font-bold text-center my-3">Registration Here</h1>
+      
       <div className="form-control">
           <label className="label">
             <span className="label-tex text-xl">Name</span>
