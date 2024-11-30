@@ -13,9 +13,11 @@ const LoginPage = () => {
   <div className="hero-content w-full flex-col ">
     <div className="text-center w-1/2 lg:text-left">
       <h1 className="text-5xl font-bold text-center my-3">Login now!</h1>
+
+      
+      <h1 className="text-5xl font-bold text-center my-3">Login now!</h1>
       
       
-     
     </div>
 
 
